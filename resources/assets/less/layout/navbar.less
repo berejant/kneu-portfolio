@@ -1,0 +1,61 @@
+@navbar-inverse-bg: #2b8c42;
+@navbar-inverse-link-color: #d7f7d7;
+
+.main-navbar {
+  &:extend(.navbar);
+  .navbar-inverse;
+
+  .navbar-brand {
+    padding-left: 64px;
+    background: url("layout/logo.png") 0 center no-repeat;
+  }
+
+  .navbar-nav > li > a {
+    height: 64px;
+  }
+
+}
+
+.user-icon {
+  &:extend(.glyphicon);
+  .glyphicon-user;
+}
+
+.logout-form {
+  .form-inline;
+
+  button {
+    &:extend(.btn);
+    .btn-link;
+    color: @navbar-inverse-link-color;
+    line-height: @line-height-computed;
+    padding: 0;
+    text-transform: none;
+    vertical-align: top;
+
+    &:hover, &:focus, &:active, &:active:hover {
+      color: @navbar-inverse-link-hover-color;
+      background-color: @navbar-inverse-link-hover-bg;
+      text-decoration: none;
+      background-image: none;
+      box-shadow:none;
+    }
+
+  };
+}
+
+.login-icon {
+  &:extend(.glyphicon);
+  .glyphicon-log-in;
+}
+
+.logout-icon {
+  &:extend(.glyphicon);
+  .glyphicon-log-out;
+}
+
+.new-petition-button {
+  &:extend(.btn);
+  .btn-sm;
+  .btn-default;
+}
