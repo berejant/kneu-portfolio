@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5fdca4aef2738fdc6c2741f14a0bea2d",
-    "content-hash": "4cfccfe0520e84a1f57aecdba5d03195",
+    "hash": "75e7872511f31ead303522492a261034",
+    "content-hash": "fb73a24dc226bb94b339c670fb71fcf3",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -470,6 +470,44 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "kneu/api",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berejant/kneu-api.git",
+                "reference": "aaf3f53d2bf9c9f0fc889b65c2327e4fc0b66bcf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berejant/kneu-api/zipball/aaf3f53d2bf9c9f0fc889b65c2327e4fc0b66bcf",
+                "reference": "aaf3f53d2bf9c9f0fc889b65c2327e4fc0b66bcf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kneu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Berezhnoj",
+                    "email": "berejant@gmail.com"
+                }
+            ],
+            "description": "PHP client for KNEU REST API Service",
+            "time": "2017-09-09 14:14:56"
         },
         {
             "name": "kneu/laravel-socialite-provider",

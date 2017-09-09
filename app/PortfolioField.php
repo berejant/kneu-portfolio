@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioField whereOrderIndex($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioField wherePortfolioCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioField whereValueType($value)
+ * @property int $value_type
  */
 class PortfolioField extends Model
 {

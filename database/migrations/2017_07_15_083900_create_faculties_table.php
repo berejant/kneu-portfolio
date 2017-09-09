@@ -18,6 +18,7 @@ class CreateFacultiesTable extends Migration
             $table->primary('id');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

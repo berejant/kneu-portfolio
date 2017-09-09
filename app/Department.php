@@ -3,6 +3,7 @@
 namespace Kneu\Portfolio;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Kneu\Portfolio\Department
@@ -20,10 +21,25 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Department whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Department whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Department whereUpdatedAt($value)
+ * @property string|null $deleted_at
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Department onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Department whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Department withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Department withoutTrashed()
  */
 class Department extends Model
 {
+    use SoftDeletes;
+
     public $incrementing = false;
+
+    protected $fillable = [
+        'id',
+        'faculty_id',
+        'name',
+    ];
 
     public function faculty()
     {

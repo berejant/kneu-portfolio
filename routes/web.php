@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-
     $faculty = new \Kneu\Portfolio\Faculty();
 
 

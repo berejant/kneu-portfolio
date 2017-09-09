@@ -3,6 +3,7 @@
 namespace Kneu\Portfolio;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Kneu\Portfolio\Teacher
@@ -25,10 +26,26 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereMiddleName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereUpdatedAt($value)
+ * @property string|null $deleted_at
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Teacher onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Teacher withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Teacher withoutTrashed()
  */
 class Teacher extends Model
 {
+    use SoftDeletes;
+
     public $incrementing = false;
+
+
+    protected $fillable = [
+        'id',
+        'first_name', 'middle_name', 'last_name',
+        'department_id',
+    ];
 
     public function portfolioValues()
     {
