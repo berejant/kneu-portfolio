@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue wherePortfolioFieldId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereTeacherId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue withPortfolioCategory()
  */
 class PortfolioValue extends Model
 {
@@ -43,6 +44,15 @@ class PortfolioValue extends Model
     public function teacher()
     {
         return $this->belongsTo(__NAMESPACE__ . '\Teacher');
+    }
+
+    public function scopeWithPortfolioCategory($query)
+    {
+        return $query->with([
+            'PortfolioField' => function($portfolioField) {
+                return $portfolioField->with('PortfolioCategory');
+            }
+        ]);
     }
 
 }

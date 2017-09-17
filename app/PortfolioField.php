@@ -34,6 +34,10 @@ class PortfolioField extends Model
 {
     public $timestamps = false;
 
+    protected $orderBy = 'order_index';
+    protected $orderDirection = 'ASC';
+
+
     protected $casts = [
         'allow_description' => 'boolean',
         'config' => 'array',
@@ -48,4 +52,22 @@ class PortfolioField extends Model
     {
         return $this->hasMany(__NAMESPACE__ . '\PortfolioValue');
     }
+
+    public function formatValue(PortfolioValue $value = null)
+    {
+        if(!$value) {
+            return '';
+
+        } else {
+
+            return $value->value;
+        }
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order_index', 'ASC');
+    }
+
+
 }

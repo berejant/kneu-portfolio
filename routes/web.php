@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    $faculty = new \Kneu\Portfolio\Faculty();
 
+Route::get('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/login/complete', 'Auth\LoginController@loginComplete');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-    return view('welcome');
-});
+Route::get('/portfolio/{teacher}', 'PortfolioViewController@show')->name('portfolio.show');
+Route::get('/', 'PortfolioViewController@index')->name('index');
+

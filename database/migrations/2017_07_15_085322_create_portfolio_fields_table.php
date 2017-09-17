@@ -24,6 +24,7 @@ class CreatePortfolioFieldsTable extends Migration
             $table->boolean('allow_description');
             $table->unsignedTinyInteger('date_type');
             $table->unsignedTinyInteger('order_index');
+            $table->index('order_index');
         });
     }
 

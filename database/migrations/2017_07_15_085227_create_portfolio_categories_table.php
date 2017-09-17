@@ -16,7 +16,8 @@ class CreatePortfolioCategoriesTable extends Migration
         Schema::create('portfolio_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->timestamps();
+            $table->unsignedTinyInteger('order_index');
+            $table->index('order_index');
         });
     }
 

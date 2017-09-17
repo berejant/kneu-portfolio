@@ -44,6 +44,7 @@ class Teacher extends Model
     protected $fillable = [
         'id',
         'first_name', 'middle_name', 'last_name',
+        'image_url',
         'department_id',
     ];
 
@@ -60,6 +61,11 @@ class Teacher extends Model
     public function department()
     {
         return $this->belongsTo(__NAMESPACE__ . '\Department');
+    }
+
+    public function getFullName()
+    {
+        return $this->last_name . ' ' . $this->first_name . ' ' . $this->middle_name;
     }
 
 }
