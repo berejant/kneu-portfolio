@@ -4,7 +4,11 @@ import jquery from "jquery";
 
 import axios0 from "axios";
 
+import autosize from "autosize";
+
 window._ = lodash;
+
+window.autosize = autosize;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

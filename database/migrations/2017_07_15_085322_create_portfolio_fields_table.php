@@ -18,7 +18,7 @@ class CreatePortfolioFieldsTable extends Migration
             $table->unsignedInteger('portfolio_category_id');
             $table->foreign('portfolio_category_id')->references('id')->on('portfolio_categories');
             $table->text('name');
-            $table->unsignedTinyInteger('value_type');
+            $table->unsignedTinyInteger('type');
             $table->text('hint');
             $table->text('config');
             $table->boolean('allow_description');

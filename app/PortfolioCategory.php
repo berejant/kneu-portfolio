@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioCategory whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioCategory withPortfolioValue($teacherId = null)
+ * @property int $order_index
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioCategory ordered()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioCategory whereOrderIndex($value)
  */
 class PortfolioCategory extends Model
 {
@@ -31,11 +34,19 @@ class PortfolioCategory extends Model
 
     public function scopeWithPortfolioValue($portfolioCategoryQuery, $teacherId = null)
     {
-        return $portfolioCategoryQuery->with(['PortfolioFields' => function($portfolioFieldsQuery) use ($teacherId) {
-            return $portfolioFieldsQuery->with(['PortfolioValues' => function($portfolioValuesQuery) use ($teacherId) {
-                return $portfolioValuesQuery->where('teacher_id', '=', $teacherId);
-            }]);
-        }]);
+        return $portfolioCategoryQuery->with([
+            'PortfolioFields' => function($portfolioFieldsQuery) use ($teacherId) {
+                return $portfolioFieldsQuery->ordered()->with([
+                    'PortfolioValues' => function($portfolioValuesQuery) use ($teacherId) {
+                        if($teacherId) {
+                            $portfolioValuesQuery->where('teacher_id', '=', $teacherId);
+                        }
+
+                        return $portfolioValuesQuery;
+                    }
+                ]);
+            }
+        ]);
     }
 
     public function scopeOrdered($query)

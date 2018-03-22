@@ -1,1 +1,1 @@
-<?php
+{{ $field->getFirstValue() }}

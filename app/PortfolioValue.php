@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $portfolio_field_id
  * @property int $teacher_id
  * @property string $value
- * @property string $description
+ * @property string $text
  * @property string $date
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereDescription($value)
@@ -23,14 +23,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereTeacherId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue withPortfolioCategory()
+ * @property string|null $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\PortfolioValue whereUrl($value)
  */
 class PortfolioValue extends Model
 {
     public $timestamps = false;
-
-    protected $attributes = array(
-        'description' => '',
-    );
 
     protected $dates = [
         'date',

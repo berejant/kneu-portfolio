@@ -11,34 +11,7 @@ use Kneu\Portfolio\Teacher;
 class PortfolioViewController extends Controller
 {
     public function show(Teacher $teacher) {
-
-      //  \DB::enableQueryLog();
-
-        $categories = [];
-
-        /**
-         * @var PortfolioCategory $category
-         * @var PortfolioField $field
-         * @var PortfolioValue $value
-         */
-        foreach (PortfolioCategory::withPortfolioValue($teacher->id)->get() as $category) {
-            $fields = [];
-            foreach ($category->portfolioFields as $field) {
-                $value = $field->portfolioValues->first();
-
-                $fields[] = [
-                    'name' => $field->name,
-                    'formatValue' => $field->formatValue($value),
-                ];
-            }
-
-            $categories[] = [
-                'name' => $category->name,
-                'fields' => $fields,
-            ];
-        }
-
-      //  dd(\DB::getQueryLog(), $categories);
+        $categories = PortfolioCategory::withPortfolioValue($teacher->id)->ordered()->get();
 
         return view('portfolio.item', compact(
             'teacher',

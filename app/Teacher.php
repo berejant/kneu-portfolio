@@ -33,6 +33,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Teacher withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Kneu\Portfolio\Teacher withoutTrashed()
+ * @property string|null $image_url
+ * @method static \Illuminate\Database\Eloquent\Builder|\Kneu\Portfolio\Teacher whereImageUrl($value)
  */
 class Teacher extends Model
 {

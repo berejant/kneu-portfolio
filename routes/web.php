@@ -17,5 +17,7 @@ Route::get('/login/complete', 'Auth\LoginController@loginComplete');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/portfolio/{teacher}', 'PortfolioViewController@show')->name('portfolio.show');
+Route::get('/portfolio/{teacher}/edit', 'PortfolioEditController@edit')->name('portfolio.edit');
+Route::post('/portfolio/{teacher}/update', 'PortfolioEditController@update')->name('portfolio.update');
 Route::get('/', 'PortfolioViewController@index')->name('index');
 

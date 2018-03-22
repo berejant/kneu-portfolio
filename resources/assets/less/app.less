@@ -13,6 +13,11 @@
 @pagination-color: #018c23;
 @pagination-hover-color: #000;
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 footer {
   &::before {
     &:extend(hr);
@@ -56,4 +61,13 @@ textarea {
 
 .logout-form {
   &:extend(.hidden);
+}
+
+
+.edit-petition-input-list  {
+  margin-top: 4px;
+
+  li {
+    .hr(@place: after, @top: 8px, @bottom: 3px);
+  }
 }

@@ -4,6 +4,8 @@ namespace Kneu\Portfolio\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Kneu\Portfolio\Policies\TeacherPolicy;
+use Kneu\Portfolio\Teacher;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Kneu\Portfolio\Model' => 'Kneu\Portfolio\Policies\ModelPolicy',
+        Teacher::class => TeacherPolicy::class,
     ];
 
     /**

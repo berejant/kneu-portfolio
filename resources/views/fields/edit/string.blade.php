@@ -1,1 +1,1 @@
-<?php
+<input type="name" class="form-control" name="{{ $fieldName }}" id="field_{{$field->id}}" placeholder="{{$field->hint}}" />

@@ -178,8 +178,7 @@ return [
         Kneu\Portfolio\Providers\RouteServiceProvider::class,
         Kneu\Portfolio\Providers\KneuApiServiceProvider::class,
 
-        \SocialiteProviders\Manager\ServiceProvider::class,
-        \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        SocialiteProviders\Manager\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
 
     ],

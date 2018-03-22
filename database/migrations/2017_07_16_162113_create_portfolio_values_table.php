@@ -20,7 +20,8 @@ class CreatePortfolioValuesTable extends Migration
             $table->unsignedInteger('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->char('value', '5');
-            $table->text('description');
+            $table->text('text')->nullable();
+            $table->text('url')->nullable();
             $table->date('date');
         });
     }

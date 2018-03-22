@@ -5,6 +5,16 @@
  */
 import bootstrap from "./bootstrap";
 
+import autosize from "autosize";
+
+$.fn.autosize = function () {
+    autosize(this.find('textarea'));
+    autosize(this);
+    return this;
+};
+
+autosize(document.getElementsByTagName('textarea'));
+
 let $logoutForm = $('#logout-form'),
     isGuest = !$logoutForm.length;
 
@@ -22,4 +32,40 @@ if(isGuest) {
         $logoutForm.submit();
     });
 }
+
+$.fn.removeContainerIfEmptyInput = function () {
+    return this.each(function () {
+        let $container = $(this);
+        let $inputs = $container.find('input');
+        $inputs.on('blur change', function () {
+            let isEmpty = true;
+            $inputs.each(function () {
+                if($.trim(this.value)) {
+                    return isEmpty = false;
+                }
+            });
+
+            if(isEmpty) {
+                $container.remove();
+            }
+        });
+    });
+};
+
+$('.portfolio-edit-form')
+    .on('keyup change', '.js-endless-list :input', function (e) {
+        let $inputContainer = $(this).closest('.js-endless-list');
+        if($.trim(this.value)) {
+            $inputContainer.clone().insertAfter($inputContainer).find(':input').val('');
+
+            let randomKey = '[new' + Math.ceil(Math.random() * 1E5) + ']';
+            $inputContainer.removeContainerIfEmptyInput().removeClass('js-endless-list')
+                .autosize()
+                .find('input').each(function () {
+                    this.setAttribute('name', this.getAttribute('name').replace('[new]',  randomKey));
+                });
+
+        }
+    })
+    .find('.js-remove-if-empty').removeContainerIfEmptyInput();
 
